@@ -10,8 +10,13 @@ import javax.persistence.*;
 @Setter
 @Getter
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Product
 {
+	public Product(String name)
+	{
+		this.name = name;
+	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,8 +33,4 @@ public class Product
 	
 	@Column
 	private double price;
-	
-	@Column(columnDefinition = "smallint")
-	@Enumerated(value = EnumType.ORDINAL)
-	private ProductType type;
 }
