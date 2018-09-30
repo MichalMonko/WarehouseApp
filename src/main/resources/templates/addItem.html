@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Item</title>
+</head>
+<body>
+
+<div th:if="*{errorMessage}">
+    <h2 th:text="#{addErrorMessage}"></h2>
+</div>
+<div th:if="*{successMessage}">
+    <h2 th:text="#{addSuccessMessage}"></h2>
+</div>
+
+<form th:action="@{/addItem}" th:object="${itemForm}" method="post">
+    <label for="nameField">Name: </label>
+    <input id="nameField" type="text" th:field="*{name}">
+    <br/>
+    <label for="descriptionField">Description: </label>
+    <input id="descriptionField" type="text" th:field="*{description}">
+    <br/>
+    <input type="submit" value="Add Item">
+</form>
+</body>
+</html>
